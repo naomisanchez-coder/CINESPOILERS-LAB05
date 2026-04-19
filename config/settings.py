@@ -30,7 +30,9 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    # Aquí irán tus apps: "movies", "rooms", "bookings", etc.
+    "apps.movies",
+    "apps.rooms",
+    "apps.screenings",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
