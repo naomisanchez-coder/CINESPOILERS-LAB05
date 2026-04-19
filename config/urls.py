@@ -16,10 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+
+from apps.movies.views import GenreViewSet, MovieViewSet
+from apps.rooms.views import RoomViewSet
+from apps.screenings.views import ScreeningViewSet
+
+router = DefaultRouter()
+router.register(r"genres", GenreViewSet, basename="genre")
+router.register(r"movies", MovieViewSet, basename="movie")
+router.register(r"rooms", RoomViewSet, basename="room")
+router.register(r"screenings", ScreeningViewSet, basename="screening")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/v1/", include("apps.movies.urls")),
-    path("api/v1/", include("apps.rooms.urls")),
-    path("api/v1/", include("apps.screenings.urls")),
+    path("api/v1/", include(router.urls)),
 ]
